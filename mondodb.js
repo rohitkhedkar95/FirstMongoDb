@@ -44,6 +44,7 @@ Db.collection('users').findOne({Name:"Kona"},(eror,user)=>{
 if(error)
 {
     return console.log("Error in Mongo DB");
+    console.log("Eror in Db Connection")
 }
 
 console.log(user)
