@@ -9,7 +9,7 @@ const {MongoClient,MongodbId, ObjectID}=require("mongodb")
 
 const ConnectionUrl='mongodb://127.0.0.1:27017'
 const DtatabseName='task-man'
-const Id=new ObjectID();
+// const Id=new ObjectID();
 
 
 MongoClient.connect(ConnectionUrl,{useNewUrlParser:true},(error,client)=>{
@@ -21,6 +21,33 @@ if(error)
 console.log("Connected to mongodb")
 
 const Db=client.db(DtatabseName);
+
+
+Db.collection('users').updateOne({
+
+    _id: new ObjectID("5eedc753ebcce824e016c8ae")
+},
+{
+    $set:{
+             Name:"Mohan-Ms"
+    },$inc:{
+        Age:1
+    }
+}).then((result)=>{
+console.log(result);
+}).catch((error)=>{
+console.log(error);
+
+})
+
+
+
+
+
+
+
+
+
 // Db.collection('users').insertMany([{
 //     Name:'Mona',
 //     Age:25
@@ -38,17 +65,17 @@ const Db=client.db(DtatabseName);
 
 
 
-Db.collection('users').findOne({Name:"Kona"},(eror,user)=>{
+// Db.collection('users').findOne({Name:"Kona"},(eror,user)=>{
 
 
-if(error)
-{
-    return console.log("Error in Mongo DB");
-    console.log("Eror in Db Connection")
-}
+// if(error)
+// {
+//     return console.log("Error in Mongo DB");
+//     console.log("Eror in Db Connection")
+// }
 
-console.log(user)
+// console.log(user)
 
-})
+// })
 
 })
